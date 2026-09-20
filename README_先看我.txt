@@ -1,28 +1,27 @@
-ECMO Crisis Leader — Standalone v1.3 Mixed Reasoning
+ECMO Crisis Leader — Standalone v1.4 Explainable Debrief
 
-在 v1.2 可載入案例 + Cardiac Sync 基礎上，加入 NP OSCE 式混亂選項。
+新增：
+1. Debrief 不再只顯示「錯」：
+   - Diagnosis reasoning：說明為什麼是合理 differential、為什麼本案證據不支持它為主因
+   - Management reasoning：說明處置適用的 physiology，以及為什麼本案不適當/非 definitive
+   - Case discrimination：直接比較本案關鍵線索與相似 ECMO emergency
 
-Assessment:
-- 混入合理但未必優先的 bedside assessments
-- 點了才顯示 finding
-- Basic / Advanced / Nightmare 的干擾量不同
+2. Definitive critical action 完成後：
+   - 狀態切換為 Reassessment / stabilization
+   - 停止 Instructor pathology override
+   - Timeline 明確記錄進入 reassessment
+   - Debrief 顯示 definitive action completed
 
-Diagnosis:
-- 混入相似 ECMO emergencies
-- hypovolemia, drainage insufficiency, cannula migration, kink, tamponade,
-  tension pneumothorax, oxygenator thrombosis/failure, sweep failure,
-  recirculation, high CO, Harlequin, LV distension, limb ischemia, pump failure, arrhythmia
-
-Management:
-- 混入合理、非優先、錯誤機轉與可能有害選項
-- 不在按鈕上先提示答案
-- 部分錯誤處置只留下 response / warning log，讓 learner reassess
+範例：Return tubing kink
+- Crystalloid 在 hypovolemia/drainage insufficiency 可能合理
+- 但 return-side kink 是 mechanical obstruction，volume 無法解除 obstruction
+- Sweep gas failure 主要是 gas-exchange/CO2 removal 問題，不解釋突然 blood-flow collapse
+- Tamponade 是合理 differential，但需 CVP/POCUS/filling/pulse pressure 等支持
 
 保留：
-- 23 case definitions
+- 23 cases
+- Mixed Clinical Reasoning
 - Cardiac Sync
 - 本機 Instructor
-- Debrief
 - 無 Firebase / Room / Live
-
-注意：本版是教育模擬介面；invasive rescue action 仍應依真實臨床 indication 執行。
+- JS syntax PASS
