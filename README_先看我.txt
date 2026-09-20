@@ -1,19 +1,33 @@
-ECMO Crisis Leader — Standalone v1.5 Case-Scoped Reasoning
+ECMO Crisis Leader — Standalone v2.0 Physiology Engine
 
-修正 v1.4.1 截圖發現的 cross-case management pollution：
-- 干擾項現在有獨立 selected state，不再借用原 case treatment state。
-- 換 case 時額外 Assessment / Diagnosis / Management state 會清空。
-- 綠色 ✓ 只代表 learner 真的點過。
-- DPC / distal perfusion / vascular limb-rescue procedures 不再作為一般 case 的 generic distractor。
-- Cannula migration-specific refixation/reposition procedures只在 migration case 的 native treatment 中保留。
-- VA-KINK 不會再莫名出現整排已完成的 DPC management。
+MAJOR VERSION
+核心改變：monitor 數字不再各自硬寫，而由同一 physiology engine 推導。
 
-仍保留：
+Chain:
+pathology
+→ preload / drainage resistance / return resistance / membrane resistance / pump / gas exchange / recirculation / native circulation
+→ ECMO flow + Pven + Ppre + Ppost + ΔP
+→ BP / SpO2 / CVP / Hb
+→ alarm / circuit animation / debrief
+
+可辨識的 pressure-flow patterns:
+- hypovolemia / drainage insufficiency: preload↓ → suction↑ → Pven more negative → chatter / flow↓
+- return tubing kink: return resistance↑ → flow↓ + return-side pressure pattern
+- oxygenator thrombosis: membrane resistance↑ → ΔP↑ + flow limitation
+- sweep interruption: blood flow may remain, gas transfer deteriorates
+- VV recirculation: displayed flow may exist but effective oxygenated systemic flow falls
+- pump failure: pump capacity collapses
+- VA arrest: electrical HR can be 0 while VA ECMO can preserve non-pulsatile pressure/perfusion
+- VV arrest: no circulatory support → BP collapses
+
+ELSO-aligned educational model; numeric values and deterioration timing are simulation modeling, not ELSO fixed clinical cutoffs.
+
+Preserved:
 - 23 cases
-- Mixed clinical reasoning
-- Explainable Debrief
-- Reassessment / stabilization
+- Case-scoped mixed reasoning
+- Explainable + ELSO debrief
 - Cardiac Sync
-- Mobile Debrief button fix
-- 本機 Instructor
-- 無 Firebase / Room / Live
+- Reassessment
+- Mobile Debrief fix
+- Local Instructor
+- No Firebase
